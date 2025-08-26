@@ -13,12 +13,10 @@
           <tr>
             <th>No</th>
             <th>Category</th>
-            <th>Team Home</th>
-            <th>Team Away</th>
+            <th>Teams</th>
             <th>Match Date</th>
             <th>Status</th>
-            <th>Score Home</th>
-            <th>Score Away</th>
+            <th>Scores</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -31,17 +29,45 @@
             </tr>
           <?php else: ?>
             <?php foreach ($matches as $match): ?>
+              <!-- Alternative: Single column for match display -->
               <tr>
                 <td><?= $startIndex++ ?></td>
                 <td><?= $match['sport_name'] ?></td>
-                <td><?= $match['team_home_name'] ?></td>
-                <td><?= $match['team_away_name'] ?></td>
+
+                <!-- Teams in VS format -->
+                <td>
+                  <div class="d-flex align-items-center justify-content-between" style="min-width: 200px;">
+                    <!-- Home Team -->
+                    <div class="d-flex align-items-center">
+                      <?php if (!empty($match['team_home_logo'])): ?>
+                        <img src="<?= base_url('uploads/teams/' . $match['team_home_logo']) ?>"
+                          alt="<?= $match['team_home_name'] ?>"
+                          class="team-logo me-2"
+                          style="width: 25px; height: 25px; object-fit: cover; border-radius: 50%;">
+                      <?php endif; ?>
+                      <span class="fw-bold"><?= $match['team_home_name'] ?></span>
+                    </div>
+
+                    <!-- VS -->
+                    <span class="badge bg-secondary mx-2">VS</span>
+
+                    <!-- Away Team -->
+                    <div class="d-flex align-items-center">
+                      <span class="fw-bold"><?= $match['team_away_name'] ?></span>
+                      <?php if (!empty($match['team_away_logo'])): ?>
+                        <img src="<?= base_url('uploads/teams/' . $match['team_away_logo']) ?>"
+                          alt="<?= $match['team_away_name'] ?>"
+                          class="team-logo ms-2"
+                          style="width: 25px; height: 25px; object-fit: cover; border-radius: 50%;">
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </td>
+
                 <td><?= date('d M Y', strtotime($match['match_date'])) ?></td>
                 <td>
                   <?php
                   $badgeClass = '';
-                  $statusText = ucfirst($match['status']);
-
                   switch ($match['status']) {
                     case 'upcoming':
                       $badgeClass = 'bg-primary';
@@ -59,36 +85,28 @@
                       $badgeClass = 'bg-secondary';
                   }
                   ?>
-                  <span class="badge <?= $badgeClass ?>"><?= $statusText ?></span>
+                  <span class="badge <?= $badgeClass ?>"><?= ucfirst($match['status']) ?></span>
                 </td>
+
+                <!-- Score -->
                 <td class="text-center">
                   <?php if ($match['status'] == 'finished'): ?>
-                    <strong><?= $match['score_home'] ?></strong>
+                    <span class="fw-bold fs-5"><?= $match['score_home'] ?> - <?= $match['score_away'] ?></span>
                   <?php else: ?>
-                    <?= $match['score_home'] ?: '-' ?>
+                    <span class="text-muted">- : -</span>
                   <?php endif; ?>
                 </td>
-                <td class="text-center">
-                  <?php if ($match['status'] == 'finished'): ?>
-                    <strong><?= $match['score_away'] ?></strong>
-                  <?php else: ?>
-                    <?= $match['score_away'] ?: '-' ?>
-                  <?php endif; ?>
-                </td>
+
                 <td>
                   <a href="<?= base_url('/matches/form?id=' . $match['match_id']) ?>"
-                    class="btn btn-sm btn-warning"
-                    title="Edit Match">
+                    class="btn btn-sm btn-warning me-1">
                     <i class="fa fa-edit"></i>
                   </a>
                   <form action="<?= base_url('/matches-schedule/delete/' . $match['match_id']) ?>"
-                    method="post"
-                    style="display:inline-block;">
+                    method="post" style="display:inline-block;">
                     <?= csrf_field() ?>
-                    <button type="submit"
-                      class="btn btn-sm btn-danger"
-                      title="Delete Match"
-                      onclick="return confirm('Are you sure you want to delete this match?')">
+                    <button type="submit" class="btn btn-sm btn-danger"
+                      onclick="return confirm('Are you sure?')">
                       <i class="fa fa-trash"></i>
                     </button>
                   </form>

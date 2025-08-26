@@ -25,10 +25,12 @@ class MatchController extends BaseController
         $offset = ($currentPage - 1) * $totalLimit;
 
         $matches = $this->matchModel
-            ->select('matches.*, 
-                     sports.name as sport_name,
-                     t1.name as team_home_name,
-                     t2.name as team_away_name')
+            ->select('matches.*,
+             sports.name as sport_name,
+             t1.name as team_home_name,
+             t1.logo as team_home_logo,
+             t2.name as team_away_name,
+             t2.logo as team_away_logo')
             ->join('sports', 'sports.sport_id = matches.sport_id', 'left')
             ->join('teams t1', 't1.team_id = matches.team_home_id', 'left')
             ->join('teams t2', 't2.team_id = matches.team_away_id', 'left')
