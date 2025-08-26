@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>/favicon.ico">
   <link rel="icon" href="<?= base_url(); ?>/favicon.ico">
   <title>
-    SIPENKA
+    Furqonic Media
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -95,6 +95,8 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+
+        <hr />
         <li class="nav-item">
           <a class="nav-link <?= $currentURI === 'users' ? 'active' : '' ?>" href="/users">
             <div class="me-2 d-flex align-items-center justify-content-center">
@@ -104,19 +106,45 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= $currentURI === 'criteria' ? 'active' : '' ?>" href="/criteria">
+          <a class="nav-link <?= $currentURI === 'teams' ? 'active' : '' ?>" href="/teams">
             <div class="me-2 d-flex align-items-center justify-content-center">
-              <i class="fab fa-envira"></i>
+              <i class="fas fa-user-secret"></i>
             </div>
-            <span class="nav-link-text ms-1">Sports Category</span>
+            <span class="nav-link-text ms-1">Teams</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= $currentURI === 'criteria' ? 'active' : '' ?>" href="/criteria">
+          <a class="nav-link <?= $currentURI === 'sports' ? 'active' : '' ?>" href="/sports">
             <div class="me-2 d-flex align-items-center justify-content-center">
-              <i class="fab fa-envira"></i>
+              <i class="far fa-futbol"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sports</span>
+          </a>
+        </li>
+
+        <hr />
+        <li class="nav-item">
+          <a class="nav-link <?= $currentURI === 'articles' ? 'active' : '' ?>" href="/articles">
+            <div class="me-2 d-flex align-items-center justify-content-center">
+              <i class="far fa-newspaper"></i>
             </div>
             <span class="nav-link-text ms-1">Articles</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentURI === 'matches' ? 'active' : '' ?>" href="/matches">
+            <div class="me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-calendar"></i>
+            </div>
+            <span class="nav-link-text ms-1">Matches</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentURI === 'intermezzo' ? 'active' : '' ?>" href="/intermezzo">
+            <div class="me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-wine-bottle"></i>
+            </div>
+            <span class="nav-link-text ms-1">Intermezzo</span>
           </a>
         </li>
     </div>

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SportModel extends Model
+class TeamModel extends Model
 {
-    protected $table            = 'sports';
-    protected $primaryKey       = 'sport_id';
+    protected $table            = 'teams';
+    protected $primaryKey       = 'team_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'slug'];
+    protected $allowedFields    = ['name', 'logo'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

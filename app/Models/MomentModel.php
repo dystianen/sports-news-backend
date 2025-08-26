@@ -12,7 +12,7 @@ class MomentModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['sport_id', 'title', 'thumbnail', 'video_url', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields    = ['sport_id', 'title', 'thumbnail', 'video_url'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

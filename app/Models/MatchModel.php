@@ -12,7 +12,7 @@ class MatchModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['sport_id', 'team_home', 'team_away', 'match_date', 'status', 'score_home', 'score_away', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields    = ['sport_id', 'team_home_id', 'team_away_id', 'match_date', 'status', 'score_home', 'score_away'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class MatchModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

@@ -26,9 +26,23 @@ $routes->group('users', ['filter' => 'authGuard'], function ($routes) {
   $routes->post('delete/(:num)', 'UserController::delete/$1');
 });
 
-$routes->group('periods', ['filter' => 'authGuard'], function ($routes) {
-  $routes->get('', 'PeriodController::index');
-  $routes->get('form', 'PeriodController::form');
-  $routes->post('save', 'PeriodController::save');
-  $routes->post('delete/(:num)', 'PeriodController::delete/$1');
+$routes->group('sports', ['filter' => 'authGuard'], function ($routes) {
+  $routes->get('', 'SportController::index');
+  $routes->get('form', 'SportController::form');
+  $routes->post('save', 'SportController::save');
+  $routes->post('delete/(:num)', 'SportController::delete/$1');
+});
+
+$routes->group('teams', ['filter' => 'authGuard'], function ($routes) {
+  $routes->get('', 'TeamController::index');
+  $routes->get('form', 'TeamController::form');
+  $routes->post('save', 'TeamController::save');
+  $routes->post('delete/(:num)', 'TeamController::delete/$1');
+});
+
+$routes->group('matches', ['filter' => 'authGuard'], function ($routes) {
+  $routes->get('', 'MatchController::index');
+  $routes->get('form', 'MatchController::form');
+  $routes->post('save', 'MatchController::save');
+  $routes->post('delete/(:num)', 'MatchController::delete/$1');
 });

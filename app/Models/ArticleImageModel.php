@@ -12,7 +12,7 @@ class ArticleImageModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['article_id', 'image_url', 'caption', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields    = ['article_id', 'image_url', 'caption'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

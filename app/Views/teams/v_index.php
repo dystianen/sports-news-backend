@@ -2,8 +2,8 @@
 <?= $this->section('content') ?>
 <div class="container-fluid card">
   <div class="card-header mb-4 pb-0 d-flex align-items-center justify-content-between">
-    <h4>Periods</h4>
-    <a href="<?= base_url('/periods/form') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Period</a>
+    <h4>Teams List</h4>
+    <a href="<?= base_url('/teams/form') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Team</a>
   </div>
 
   <div class="card-body px-0 pt-0 pb-2">
@@ -12,31 +12,27 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>Logo</th>
             <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Active</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <?php $startIndex = ($pager["currentPage"] - 1) * $pager["limit"] + 1; ?>
 
-          <?php if (empty($periods)): ?>
+          <?php if (empty($teams)): ?>
             <tr>
-              <td colspan="7" class="text-center text-muted">No period data available.</td>
+              <td colspan="5" class="text-center text-muted">No user data available.</td>
             </tr>
           <?php else: ?>
-            <?php foreach ($periods as $p): ?>
+            <?php foreach ($teams as $team): ?>
               <tr>
                 <td><?= $startIndex++ ?></td>
-                <td><?= $p['name'] ?></td>
-                <td><?= $p['start_date'] ?></td>
-                <td><?= $p['end_date'] ?></td>
-                <td><?= $p['is_active'] ? 'Yes' : 'No' ?></td>
+                <td><img src="<?= base_url('uploads/teams/' . $team['logo']) ?>" alt="Logo" width="50"></td>
+                <td><?= $team['name'] ?></td>
                 <td>
-                  <a href="<?= base_url('/periods/form?id=' . $p['period_id']) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                  <form action="<?= base_url('/periods/delete/' . $p['period_id']) ?>" method="post" style="display:inline-block;">
+                  <a href="<?= base_url('/teams/form?id=' . $team['team_id']) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                  <form action="<?= base_url('/teams/delete/' . $team['team_id']) ?>" method="post" style="display:inline-block;">
                     <?= csrf_field() ?>
                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>
                   </form>
@@ -65,7 +61,7 @@
 
   // PAGINATION
   function handlePagination(pageNumber) {
-    window.location.replace(`<?php echo base_url(); ?>periods?page=${pageNumber}`);
+    window.location.replace(`<?php echo base_url(); ?>teams?page=${pageNumber}`);
   }
 
   var paginationContainer = document.getElementById('pagination');
