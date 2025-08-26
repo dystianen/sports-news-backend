@@ -42,8 +42,8 @@
                       <?php if (!empty($match['team_home_logo'])): ?>
                         <img src="<?= base_url('uploads/teams/' . $match['team_home_logo']) ?>"
                           alt="<?= $match['team_home_name'] ?>"
-                          class="team-logo me-2"
-                          style="width: 25px; height: 25px; object-fit: cover; border-radius: 50%;">
+                          class="me-2"
+                          style="width: 25px; height: 25px; object-fit: contain; border-radius: 50%;">
                       <?php endif; ?>
                       <span class="fw-bold"><?= $match['team_home_name'] ?></span>
                     </div>
@@ -57,8 +57,8 @@
                       <?php if (!empty($match['team_away_logo'])): ?>
                         <img src="<?= base_url('uploads/teams/' . $match['team_away_logo']) ?>"
                           alt="<?= $match['team_away_name'] ?>"
-                          class="team-logo ms-2"
-                          style="width: 25px; height: 25px; object-fit: cover; border-radius: 50%;">
+                          class="ms-2"
+                          style="width: 25px; height: 25px; object-fit: contain; border-radius: 50%;">
                       <?php endif; ?>
                     </div>
                   </div>
